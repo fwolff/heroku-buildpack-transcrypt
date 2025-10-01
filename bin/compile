@@ -17,6 +17,11 @@ printf "\nENV_DIR: $ENV_DIR"
 printf "\nCURRENT_DIR: $CURRENT_DIR"
 printf "\nTRANSCRYPT_ENV_FILE: $TRANSCRYPT_ENV_FILE"
 
+ls -la $BUILD_DIR
+ls -la $CACHE_DIR
+ls -la $ENV_DIR
+ls -la $CURRENT_DIR
+
 if [ ! -f $TRANSCRYPT_ENV_FILE ]; then
     printf "\n-----> ERROR: Please set TRANSCRYPT_CMD. You can get the command by running in your project directory: transcrypt --display \n\n"
     exit 1
