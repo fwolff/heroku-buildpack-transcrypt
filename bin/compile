@@ -17,8 +17,6 @@ printf "\nENV_DIR: $ENV_DIR"
 printf "\nCURRENT_DIR: $CURRENT_DIR"
 printf "\nTRANSCRYPT_ENV_FILE: $TRANSCRYPT_ENV_FILE"
 
-cat $BUILD_DIR/.env
-
 if [ ! -f $TRANSCRYPT_ENV_FILE ]; then
     printf "\n-----> ERROR: Please set TRANSCRYPT_CMD. You can get the command by running in your project directory: transcrypt --display \n\n"
     exit 1
@@ -46,9 +44,10 @@ git init . --quiet
 
 # Install transcrypt, its helper utils, and password/cipher
 printf "\n-----> Installing and configuring transcrypt\n\n"
-# cd $CURRENT_DIR
-printf "\neval $CACHE_DIR/transcrypt/$TRANSCRYPT_CMD -y\n"
 eval $CACHE_DIR/transcrypt/$TRANSCRYPT_CMD -y
+
+printf "\n-----> Listing encrypted files\n\n"
+git ls-crypt
 
 printf "\n-----> All transcrypted files decrypted!\n\n"
 
