@@ -22,7 +22,7 @@ printf "\n-----> Successfully retrieved TRANSCRYPT_PASS from ENV var: $TRANSCRYP
 
 cd $BUILD_DIR
 
-ENC_PASS='YndPugWia8TsLrKj8yzAHWJnTkFILB4mlbyuhIhZ' openssl enc -d -aes-256-cbc -md MD5 -pass env:ENC_PASS -a -in ".env"
+ENC_PASS="$TRANSCRYPT_PASS_FILE" openssl enc -d -aes-256-cbc -md MD5 -pass env:ENC_PASS -a -in ".env"
 # cat .gitattributes | \
 # grep "filter=crypt diff=crypt merge=crypt" | \
 # grep -v "^#" | \
