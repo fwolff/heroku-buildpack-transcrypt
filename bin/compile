@@ -27,7 +27,7 @@ grep "filter=crypt diff=crypt merge=crypt" | \
 grep -v "^#" | \
 sed 's/filter=crypt diff=crypt merge=crypt//;s/ //g' | \
 tr '\n' '\0' | \
-xargs -0 -I{} sh -c "\necho '-----> Decrypting {}'; ENC_PASS='$TRANSCRYPT_PASS_FILE' openssl enc -d -aes-256-cbc -md MD5 -pass env:ENC_PASS -a -in {} 2>/dev/null > {}.dec"
+xargs -0 -I{} sh -c "echo '\n-----> Decrypting {}'; ENC_PASS='$TRANSCRYPT_PASS_FILE' openssl enc -d -aes-256-cbc -md MD5 -pass env:ENC_PASS -a -in {} 2>/dev/null > {}.dec"
 
 ls -la
 
