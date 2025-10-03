@@ -22,13 +22,14 @@ printf "\n-----> Successfully retrieved TRANSCRYPT_PASS from ENV var: $TRANSCRYP
 
 cd $BUILD_DIR
 
-cat .gitattributes | \
-grep "filter=crypt diff=crypt merge=crypt" | \
-grep -v "^#" | \
-sed 's/filter=crypt diff=crypt merge=crypt//;s/ //g' | \
-tr '\n' '\0' | \
-xargs -0 -I{} sh -c "echo '\n-----> Decrypting {}'; ENC_PASS=\"$TRANSCRYPT_PASS_FILE\" openssl enc -d -aes-256-cbc -md MD5 -pass env:ENC_PASS -a -in {} 2>/dev/null > {}.dec && mv {}.dec {}"
+ENC_PASS='YndPugWia8TsLrKj8yzAHWJnTkFILB4mlbyuhIhZ' openssl enc -d -aes-256-cbc -md MD5 -pass env:ENC_PASS -a -in ".env"
+# cat .gitattributes | \
+# grep "filter=crypt diff=crypt merge=crypt" | \
+# grep -v "^#" | \
+# sed 's/filter=crypt diff=crypt merge=crypt//;s/ //g' | \
+# tr '\n' '\0' | \
+# xargs -0 -I{} sh -c "echo '\n-----> Decrypting {}'; ENC_PASS=\"$TRANSCRYPT_PASS_FILE\" openssl enc -d -aes-256-cbc -md MD5 -pass env:ENC_PASS -a -in {} 2>/dev/null > {}.dec && mv {}.dec {}"
 
-ls -la
+# ls -la
 
 printf "\n-----> All transcrypted files decrypted!\n\n"
