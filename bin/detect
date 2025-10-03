@@ -3,8 +3,8 @@
 
 BUILD_DIR=$1
 
-if [ -f "$BUILD_DIR/.gitattributes" ]; then
-    printf "Transcript"
+if [ -f "$BUILD_DIR/.gitattributes" ] && grep -q "filter=crypt diff=crypt merge=crypt" "$BUILD_DIR/.gitattributes"; then
+    printf "Transcrypt"
     exit 0
 else
     exit 1

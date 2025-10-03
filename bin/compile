@@ -18,7 +18,7 @@ fi
 
 TRANSCRYPT_PASS=$(cat $TRANSCRYPT_PASS_FILE)
 
-printf "\n-----> Successfully retrieved TRANSCRYPT_PASS from ENV var: $TRANSCRYPT_PASS\n"
+printf "\n-----> Successfully retrieved TRANSCRYPT_PASS from ENV var"
 
 cd $BUILD_DIR
 
