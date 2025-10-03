@@ -4,8 +4,8 @@
 BUILD_DIR=$1
 
 if [ -f "$BUILD_DIR/.gitattributes" ]; then
-    printf ".gitattributes detected, transcript"
+    printf "Transcript"
     exit 0
+else
+    exit 1
 fi
-
-exit 1
