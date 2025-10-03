@@ -4,7 +4,7 @@
 BUILD_DIR=$1
 
 if [ -f "$BUILD_DIR/.gitattributes" ]; then
-    printf "\n-----> .gitattributes detected, using Transcrypt buildpack\n\n"
+    printf ".gitattributes detected, transcript"
     exit 0
 fi
 
