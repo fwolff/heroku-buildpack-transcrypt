@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
 # bin/detect <build-dir>
-echo "transcrypt"
-exit 0
+
+BUILD_DIR=$1
+
+if [ -f "$BUILD_DIR/.gitattributes" ]; then
+    printf "\n-----> .gitattributes detected, using Transcrypt buildpack\n\n"
+    exit 0
+fi
+
+exit 1
