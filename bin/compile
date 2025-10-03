@@ -11,8 +11,6 @@ CURRENT_DIR=$PWD
 
 TRANSCRYPT_PASS_FILE="$ENV_DIR/TRANSCRYPT_PASS"
 
-ls -l $ENV_DIR
-
 if [ ! -f $TRANSCRYPT_PASS_FILE ]; then
     printf "\n-----> ERROR: Please set TRANSCRYPT_PASS. You can get the password by running in your project directory: transcrypt --display \n\n"
     exit 1
@@ -29,6 +27,8 @@ grep "filter=crypt diff=crypt merge=crypt" | \
 grep -v "^#" | \
 sed 's/filter=crypt diff=crypt merge=crypt//;s/ //g' | \
 tr '\n' '\0' | \
-xargs -0 -I{} sh -c "echo '-----> Decrypting {}'; ENC_PASS='$TRANSCRYPT_PASS_FILE' openssl enc -d -aes-256-cbc -md MD5 -pass env:ENC_PASS -a -in {} 2>/dev/null > {}.dec  && mv {}.dec {}"
+xargs -0 -I{} sh -c "\necho '-----> Decrypting {}'; ENC_PASS='$TRANSCRYPT_PASS_FILE' openssl enc -d -aes-256-cbc -md MD5 -pass env:ENC_PASS -a -in {} 2>/dev/null > {}.dec"
+
+ls -la
 
 printf "\n-----> All transcrypted files decrypted!\n\n"
