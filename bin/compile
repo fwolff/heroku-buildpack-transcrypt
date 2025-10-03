@@ -11,6 +11,8 @@ CURRENT_DIR=$PWD
 
 TRANSCRYPT_PASS_FILE="$ENV_DIR/TRANSCRYPT_PASS"
 
+ls -l $ENV_DIR
+
 if [ ! -f $TRANSCRYPT_PASS_FILE ]; then
     printf "\n-----> ERROR: Please set TRANSCRYPT_PASS. You can get the password by running in your project directory: transcrypt --display \n\n"
     exit 1
